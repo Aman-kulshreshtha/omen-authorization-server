@@ -31,6 +31,11 @@ public class ClientRegistrationController {
     @Autowired
     private final RegisteredClientEntityRepository repo;
 
+    public ClientRegistrationController(CustomRegisteredClientRepository clientRepository, RegisteredClientEntityRepository repo) {
+        this.clientRepository = clientRepository;
+        this.repo = repo;
+    }
+
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public String registerClient(@RequestBody @Valid RegisteredClientRequest request) {

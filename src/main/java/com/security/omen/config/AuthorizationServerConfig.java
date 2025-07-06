@@ -40,6 +40,7 @@ public class AuthorizationServerConfig {
                 new OAuth2AuthorizationServerConfigurer();
 
         http
+                .cors(Customizer.withDefaults())
                 .securityMatcher(authorizationServerConfigurer.getEndpointsMatcher())
                 .authorizeHttpRequests(authorize -> authorize
                         .anyRequest().authenticated()
@@ -65,6 +66,7 @@ public class AuthorizationServerConfig {
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http)
             throws Exception {
         http
+                .cors(Customizer.withDefaults())
                 .authorizeHttpRequests((authorize) -> authorize
                         .anyRequest().authenticated()
                 )
